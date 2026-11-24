@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trekhickers — Himalayan Treks &amp; Uttarakhand Tours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            pine: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22',
+            },
+            saffron: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .modal-backdrop { backdrop-filter: blur(4px); }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .page-view {
+      animation: pageEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-panel {
+      animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-900 antialiased selection:bg-pine-800 selection:text-white flex flex-col min-h-screen">
+
+  <!-- Top Utility Bar -->
+  <div class="bg-pine-950 text-stone-200 text-xs py-2 px-4 hidden md:block">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-5">
+        <a href="tel:+918630607876" class="inline-flex items-center gap-1.5 hover:text-saffron-400 transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-saffron-400"></i>
+          <span>+91 8630607876 / +91 7668244894</span>
+        </a>
+        <a href="mailto:infotrekhikers@gmail.com" class="inline-flex items-center gap-1.5 hover:text-saffron-400 transition-colors">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-saffron-400"></i>
+          <span>infotrekhikers@gmail.com</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-4 text-stone-300">
+        <span class="inline-flex items-center gap-1.5">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-saffron-400"></i>
+          <span>Mon–Sun 7:00 AM – 10:00 PM &middot; 24&times;7 Support</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="#home" data-page="home" class="nav-link flex items-center gap-2.5 shrink-0">
+        <div class="w-9 h-9 rounded-lg bg-pine-900 text-saffron-400 flex items-center justify-center shadow-sm">
+          <i data-lucide="mountain" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span id="brand-name" class="text-lg font-extrabold tracking-tight text-pine-950 block leading-none">Trekhickers</span>
+          <span class="text-[11px] font-medium text-stone-500 tracking-wide uppercase">Himalayan Treks &amp; Tours</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-stone-700">
+        <a href="#home" data-page="home" class="nav-link px-2 py-1 rounded-md transition-colors whitespace-nowrap text-pine-900 font-bold bg-pine-50">Home</a>
+        <a href="#tours" data-page="tours" class="nav-link px-2 py-1 rounded-md hover:text-pine-800 transition-colors whitespace-nowrap">Tours &amp; Treks</a>
+        <a href="#gallery" data-page="gallery" class="nav-link px-2 py-1 rounded-md hover:text-pine-800 transition-colors whitespace-nowrap">Gallery</a>
+        <a href="#about" data-page="about" class="nav-link px-2 py-1 rounded-md hover:text-pine-800 transition-colors whitespace-nowrap">About</a>
+        <a href="#support" data-page="support" class="nav-link px-2 py-1 rounded-md hover:text-pine-800 transition-colors whitespace-nowrap">Support</a>
+        <a href="#contact" data-page="contact" class="nav-link px-2 py-1 rounded-md hover:text-pine-800 transition-colors whitespace-nowrap">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="open-custom-booking-btn" type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-pine-900 hover:bg-pine-800 text-white text-sm font-semibold shadow-sm transition-all hover:scale-[1.02] cursor-pointer">
+          <i data-lucide="compass" class="w-4 h-4 text-saffron-400"></i>
+          <span>Plan Your Trip</span>
+        </button>
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" class="lg:hidden p-2 rounded-lg border border-stone-200 text-stone-700 hover:bg-stone-100">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-stone-200 bg-white px-4 py-3 space-y-1">
+      <a href="#home" data-page="home" class="mobile-nav-link nav-link block px-3 py-2 rounded-lg text-sm font-medium text-stone-700 hover:bg-stone-100">Home</a>
+      <a href="#tours" data-page="tours" class="mobile-nav-link nav-link block px-3 py-2 rounded-lg text-sm font-medium text-stone-700 hover:bg-stone-100">Tours &amp; Treks</a>
+      <a href="#gallery" data-page="gallery" class="mobile-nav-link nav-link block px-3 py-2 rounded-lg text-sm font-medium text-stone-700 hover:bg-stone-100">Gallery</a>
+      <a href="#about" data-page="about" class="mobile-nav-link nav-link block px-3 py-2 rounded-lg text-sm font-medium text-stone-700 hover:bg-stone-100">About</a>
+      <a href="#support" data-page="support" class="mobile-nav-link nav-link block px-3 py-2 rounded-lg text-sm font-medium text-stone-700 hover:bg-stone-100">Support</a>
+      <a href="#contact" data-page="contact" class="mobile-nav-link nav-link block px-3 py-2 rounded-lg text-sm font-medium text-stone-700 hover:bg-stone-100">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- ==================== PAGE: HOME ==================== -->
+    <div id="home" class="page-view">
+      <!-- Hero Section -->
+      <section class="relative overflow-hidden bg-pine-950 text-white">
+        <div class="absolute inset-0">
+          <img src="images/hero.jpg" alt="Snow-capped Himalayan peaks and alpine meadow in Uttarakhand" class="w-full h-full object-cover opacity-55" />
+          <div class="absolute inset-0 bg-gradient-to-r from-pine-950/90 via-pine-950/65 to-pine-950/35"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-32">
+          <div class="max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-saffron-400 text-xs font-semibold tracking-wide uppercase mb-5">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+              <span>Dehradun &middot; 50+ Destinations Across India</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-5">
+              Plan Your Holiday in the Himalayas
+            </h1>
+            <p class="text-base sm:text-lg text-stone-200 leading-relaxed mb-8">
+              Guided Himalayan treks, Uttarakhand pilgrimage yatras, and mountain getaways crafted with transparent pricing, experienced local guides, accommodation, meals, and transport.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3.5">
+              <a href="#tours" data-page="tours" class="nav-link inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-saffron-500 hover:bg-saffron-400 text-stone-950 font-bold text-sm sm:text-base shadow-lg transition-all hover:translate-y-[-1px]">
+                <span>Explore Treks &amp; Tours</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <button id="hero-quote-btn" type="button" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white font-semibold text-sm sm:text-base transition-colors cursor-pointer">
+                <i data-lucide="phone-call" class="w-4 h-4 text-saffron-400"></i>
+                <span>Request Custom Quote</span>
+              </button>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-lg">
+              <div>
+                <div class="text-2xl font-extrabold text-white">50+</div>
+                <div class="text-xs text-stone-300 mt-0.5">Destinations in India</div>
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-white">₹5,999</div>
+                <div class="text-xs text-stone-300 mt-0.5">Treks Starting From</div>
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <div class="text-2xl font-extrabold text-white">24&times;7</div>
+                <div class="text-xs text-stone-300 mt-0.5">Traveler Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Packages Preview on Home -->
+      <section class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-pine-700">Top Expeditions</span>
+            <h2 class="text-3xl font-extrabold text-stone-900 mt-1">Popular Himalayan Treks &amp; Tours</h2>
+          </div>
+          <a href="#tours" data-page="tours" class="nav-link inline-flex items-center gap-1.5 text-sm font-bold text-pine-800 hover:text-pine-950">
+            <span>View All 18 Packages</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+        <div id="home-featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section id="why-us" class="bg-pine-950 text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Why Travel With Us</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mt-1">Built for Safe, Seamless Mountain Travel</h2>
+            <p class="text-stone-300 mt-2 text-sm sm:text-base">
+              From Dehradun basecamps to high Himalayan passes, we handle transport, stays, meals, and permits so you can focus on the trail.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-saffron-500/20 text-saffron-400 flex items-center justify-center mb-4">
+                <i data-lucide="indian-rupee" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-2">Reasonable Pricing</h3>
+              <p class="text-sm text-stone-300 leading-relaxed">
+                Thousands of travel adventures across 50+ destinations in India with clear, upfront per-person pricing.
+              </p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-saffron-500/20 text-saffron-400 flex items-center justify-center mb-4">
+                <i data-lucide="award" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-2">Best Uttarakhand Services</h3>
+              <p class="text-sm text-stone-300 leading-relaxed">
+                Known across Uttarakhand for reliable transport, clean mountain accommodation, and wholesome trail meals.
+              </p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-saffron-500/20 text-saffron-400 flex items-center justify-center mb-4">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-2">Accomplished Guides</h3>
+              <p class="text-sm text-stone-300 leading-relaxed">
+                Well-educated, experienced trek leaders who prioritize safety, pacing, and local Himalayan knowledge.
+              </p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-saffron-500/20 text-saffron-400 flex items-center justify-center mb-4">
+                <i data-lucide="headphones" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-2">24&times;7 Client Service</h3>
+              <p class="text-sm text-stone-300 leading-relaxed">
+                Round-the-clock assistance from inquiry to return so solo travelers, families, and groups feel supported.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="bg-stone-100 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-stone-200">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-pine-700">Traveler Stories</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 mt-1">What Our Clients Say</h2>
+          </div>
+          <div id="testimonials-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE: TOURS & TREKS ==================== -->
+    <div id="tours" class="page-view hidden">
+      <section class="bg-pine-950 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Curated Expeditions</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold mt-1">All Treks &amp; Tour Packages</h1>
+          <p class="text-stone-300 mt-2 max-w-2xl text-sm sm:text-base">
+            Every standard package includes transport, meals, activities, accommodation, and an accomplished guide. Service tax @ 5% GST applies.
+          </p>
+        </div>
+      </section>
+
+      <section id="packages" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Filter & Search Controls -->
+        <div class="bg-white rounded-2xl border border-stone-200 p-4 shadow-sm mb-8 space-y-4">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div id="category-tabs" class="flex flex-wrap items-center gap-2">
+              <button type="button" data-category="all" class="cat-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer bg-pine-900 text-white">
+                All Packages
+              </button>
+              <button type="button" data-category="snow-treks" class="cat-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer bg-stone-100 text-stone-700 hover:bg-stone-200">
+                Snow &amp; Summit Treks
+              </button>
+              <button type="button" data-category="alpine-treks" class="cat-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer bg-stone-100 text-stone-700 hover:bg-stone-200">
+                Alpine Lakes &amp; Passes
+              </button>
+              <button type="button" data-category="tours" class="cat-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer bg-stone-100 text-stone-700 hover:bg-stone-200">
+                Yatra &amp; Hill Tours
+              </button>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div class="relative">
+                <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input id="search-input" type="text" placeholder="Search trek, city, route..." class="w-full sm:w-60 pl-9 pr-3 py-2 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+              </div>
+              <select id="sort-select" class="px-3 py-2 text-sm rounded-lg border border-stone-200 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-pine-700">
+                <option value="featured">Sort: Featured</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="duration-asc">Duration: Shortest First</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        <div id="empty-state" class="hidden text-center py-16 bg-white rounded-2xl border border-stone-200">
+          <i data-lucide="compass" class="w-10 h-10 text-stone-400 mx-auto mb-3"></i>
+          <h3 class="text-lg font-bold text-stone-800">No matching treks or tours found</h3>
+          <p class="text-sm text-stone-500 mt-1 mb-4">Try clearing your search or switching to another category.</p>
+          <button id="reset-filters-btn" type="button" class="px-4 py-2 rounded-lg bg-pine-900 text-white text-sm font-semibold hover:bg-pine-800 cursor-pointer">
+            Show All Packages
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE: GALLERY ==================== -->
+    <div id="gallery" class="page-view hidden">
+      <section class="bg-pine-950 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Trail Moments</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold mt-1">Expedition Gallery</h1>
+          <p class="text-stone-300 mt-2 max-w-2xl text-sm sm:text-base">
+            Highlights from our snow summits, high-altitude glacial lakes, and sacred Himalayan valleys across Uttarakhand and Himachal.
+          </p>
+        </div>
+      </section>
+
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div id="gallery-filters" class="flex flex-wrap gap-2 mb-8">
+          <button type="button" data-gcat="all" class="gal-filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-pine-900 text-white cursor-pointer">All Photos</button>
+          <button type="button" data-gcat="peaks" class="gal-filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 cursor-pointer">Snow &amp; Peaks</button>
+          <button type="button" data-gcat="lakes" class="gal-filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 cursor-pointer">Lakes &amp; Valleys</button>
+          <button type="button" data-gcat="heritage" class="gal-filter-btn px-4 py-2 rounded-lg text-sm font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 cursor-pointer">Temples &amp; Rivers</button>
+        </div>
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE: ABOUT ==================== -->
+    <div id="about" class="page-view hidden">
+      <section class="bg-pine-950 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Our Story</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold mt-1">About Trekhickers</h1>
+          <p class="text-stone-300 mt-2 max-w-2xl text-sm sm:text-base">
+            Dehradun-based Himalayan expedition specialists serving solo travelers, families, and groups across 50+ Indian destinations.
+          </p>
+        </div>
+      </section>
+
+      <section class="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-7 space-y-5">
+            <h2 class="text-3xl font-extrabold text-stone-900">Your Dehradun-Based Himalayan Travel Partner</h2>
+            <p class="text-stone-600 leading-relaxed">
+              Trekhickers organizes practical, economical, and memorable mountain expeditions across Uttarakhand and Himachal Pradesh. Whether you are planning a winter summit like Kedarkantha, an alpine lake trek to Chandranahan, or a spiritual Do Dham or Chardham Yatra, our packages bundle housing, meals, activities, and transport so you never have to worry about the logistics.
+            </p>
+            <p class="text-stone-600 leading-relaxed">
+              Our team pairs well-educated local trek leaders with dependable mountain transport and 24&times;7 client support—earning trust across Uttarakhand for safety, hospitality, and transparent pricing.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="bg-white rounded-xl border border-stone-200 p-5 shadow-sm">
+                <div class="text-xs font-bold uppercase tracking-wider text-pine-700 mb-1">Head Office</div>
+                <div class="text-sm font-bold text-stone-900">Dehradun, Uttarakhand 248001</div>
+                <div class="text-xs text-stone-500 mt-1">Open Mon–Sun, 7:00 AM – 10:00 PM</div>
+              </div>
+              <div class="bg-white rounded-xl border border-stone-200 p-5 shadow-sm">
+                <div class="text-xs font-bold uppercase tracking-wider text-pine-700 mb-1">Branch Office</div>
+                <div class="text-sm font-bold text-stone-900">Kailash Ladpur Lane-A, Dehradun</div>
+                <div class="text-xs text-stone-500 mt-1">Basecamp &amp; Departure Coordination</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm">
+              <h3 class="text-lg font-extrabold text-stone-900 mb-4 flex items-center gap-2">
+                <i data-lucide="users" class="w-5 h-5 text-pine-700"></i>
+                <span>Leadership Team</span>
+              </h3>
+              <div id="team-list" class="space-y-4"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE: SUPPORT ==================== -->
+    <div id="support" class="page-view hidden">
+      <section class="bg-pine-950 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Help Center &amp; Policies</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold mt-1">Traveler Support</h1>
+          <p class="text-stone-300 mt-2 max-w-2xl text-sm sm:text-base">
+            24&times;7 assistance, cancellation &amp; refund guidelines, terms &amp; conditions, and frequently asked trek questions.
+          </p>
+        </div>
+      </section>
+
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-pine-50 text-pine-800 flex items-center justify-center mb-4">
+              <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-stone-900 mb-2">Cancellations &amp; Refunds</h3>
+            <p class="text-sm text-stone-600 leading-relaxed mb-4">
+              Email infotrekvia@gmail.com or call +91 8630607876 for rescheduling or refunds based on advance notice prior to departure.
+            </p>
+            <button type="button" data-policy="cancellations" class="policy-btn text-xs font-bold text-pine-800 hover:underline cursor-pointer">Read Full Policy &rarr;</button>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-pine-50 text-pine-800 flex items-center justify-center mb-4">
+              <i data-lucide="file-text" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-stone-900 mb-2">Terms &amp; Conditions</h3>
+            <p class="text-sm text-stone-600 leading-relaxed mb-4">
+              All rates are subject to 5% GST. Trek leaders may adjust trail schedules in the interest of participant safety.
+            </p>
+            <button type="button" data-policy="terms" class="policy-btn text-xs font-bold text-pine-800 hover:underline cursor-pointer">Read Full Terms &rarr;</button>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-pine-50 text-pine-800 flex items-center justify-center mb-4">
+              <i data-lucide="lock" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-extrabold text-stone-900 mb-2">Privacy Policy</h3>
+            <p class="text-sm text-stone-600 leading-relaxed mb-4">
+              Traveler details are used strictly for trek permits, stays, and transport coordination—never sold to third parties.
+            </p>
+            <button type="button" data-policy="privacy" class="policy-btn text-xs font-bold text-pine-800 hover:underline cursor-pointer">Read Privacy Policy &rarr;</button>
+          </div>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="bg-white rounded-2xl border border-stone-200 p-6 sm:p-8 shadow-sm">
+          <h2 class="text-2xl font-extrabold text-stone-900 mb-5">Frequently Asked Questions</h2>
+          <div id="faq-list" class="divide-y divide-stone-200"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE: CONTACT ==================== -->
+    <div id="contact" class="page-view hidden">
+      <section class="bg-pine-950 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Get In Touch</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold mt-1">Contact Us</h1>
+          <p class="text-stone-300 mt-2 max-w-2xl text-sm sm:text-base">
+            Reach our Dehradun team daily from 7:00 AM to 10:00 PM, with 24&times;7 active trip support.
+          </p>
+        </div>
+      </section>
+
+      <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+          <div class="lg:col-span-5 bg-pine-900 text-white p-8 sm:p-10 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-saffron-400">Direct Channels</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 mb-4">Ready to Plan Your Next Trip?</h2>
+              <p class="text-stone-200 text-sm leading-relaxed mb-8">
+                Call, email, or visit either of our Dehradun offices for group discounts, custom itineraries, and Do Dham / Chardham Yatra bookings.
+              </p>
+              <div class="space-y-4 text-sm">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="phone" class="w-4 h-4 text-saffron-400 mt-0.5 shrink-0"></i>
+                  <div>
+                    <div class="font-semibold">Call Us</div>
+                    <div class="text-stone-200">+91 8630607876 &middot; +91 7668244894</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i data-lucide="mail" class="w-4 h-4 text-saffron-400 mt-0.5 shrink-0"></i>
+                  <div>
+                    <div class="font-semibold">Email</div>
+                    <div class="text-stone-200">infotrekvia@gmail.com</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-saffron-400 mt-0.5 shrink-0"></i>
+                  <div>
+                    <div class="font-semibold">Dehradun Offices</div>
+                    <div class="text-stone-200">Head Office: Dehradun, Uttarakhand 248001<br />Branch: Kailash Ladpur Lane-A, Dehradun</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-white/15 flex items-center gap-3 text-xs text-stone-300">
+              <span>Follow us:</span>
+              <a href="#contact" data-page="contact" class="nav-link px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition-colors">Facebook</a>
+              <a href="#contact" data-page="contact" class="nav-link px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition-colors">Instagram</a>
+              <a href="#contact" data-page="contact" class="nav-link px-2.5 py-1 rounded bg-white/10 hover:bg-white/20 transition-colors">YouTube</a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 p-8 sm:p-10">
+            <h3 class="text-xl font-extrabold text-stone-900 mb-1">Send a Quick Callback Request</h3>
+            <p class="text-sm text-stone-500 mb-6">Tell us where you'd like to go and we'll get back with an itinerary and quote.</p>
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="c-name" class="block text-xs font-semibold text-stone-700 mb-1">Full Name</label>
+                  <input id="c-name" type="text" required placeholder="Your name" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+                </div>
+                <div>
+                  <label for="c-phone" class="block text-xs font-semibold text-stone-700 mb-1">Phone / WhatsApp</label>
+                  <input id="c-phone" type="tel" required placeholder="+91 98XXXXXXXX" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="c-email" class="block text-xs font-semibold text-stone-700 mb-1">Email Address</label>
+                  <input id="c-email" type="email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+                </div>
+                <div>
+                  <label for="c-dest" class="block text-xs font-semibold text-stone-700 mb-1">Interested Trek or Tour</label>
+                  <input id="c-dest" type="text" placeholder="e.g., Kedarkantha Trek, Do Dham Yatra" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+                </div>
+              </div>
+              <div>
+                <label for="c-msg" class="block text-xs font-semibold text-stone-700 mb-1">Trip Notes</label>
+                <textarea id="c-msg" rows="3" placeholder="Preferred month, number of travelers, pickup city..." class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700"></textarea>
+              </div>
+              <button type="submit" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pine-900 hover:bg-pine-800 text-white text-sm font-bold transition-colors cursor-pointer">
+                <i data-lucide="send" class="w-4 h-4 text-saffron-400"></i>
+                <span>Request Callback</span>
+              </button>
+            </form>
+            <div id="contact-success" class="hidden mt-4 p-4 rounded-xl bg-pine-50 border border-pine-200 text-pine-900 text-sm"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-stone-400 py-10 px-4 sm:px-6 lg:px-8 text-sm">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-white">Trekhickers</span> &copy; 2026 All Rights Reserved.
+      </div>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#home" data-page="home" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="#tours" data-page="tours" class="nav-link hover:text-white transition-colors">Tours</a>
+        <a href="#gallery" data-page="gallery" class="nav-link hover:text-white transition-colors">Gallery</a>
+        <a href="#about" data-page="about" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="#support" data-page="support" class="nav-link hover:text-white transition-colors">Support</a>
+        <a href="#contact" data-page="contact" class="nav-link hover:text-white transition-colors">Contact</a>
+        <button type="button" data-policy="cancellations" class="policy-btn hover:text-white transition-colors cursor-pointer">Cancellations &amp; Refunds</button>
+        <button type="button" data-policy="terms" class="policy-btn hover:text-white transition-colors cursor-pointer">Terms &amp; Conditions</button>
+        <button type="button" data-policy="privacy" class="policy-btn hover:text-white transition-colors cursor-pointer">Privacy Policy</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Package Detail Modal -->
+  <div id="detail-modal" class="hidden fixed inset-0 z-50 bg-stone-950/60 modal-backdrop flex items-center justify-center p-4">
+    <div class="modal-panel bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-stone-200">
+      <div class="relative h-56 sm:h-64">
+        <img id="detail-img" src="" alt="" class="w-full h-full object-cover" />
+        <button id="close-detail-btn" type="button" aria-label="Close details" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center shadow cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div id="detail-badge" class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-pine-950/85 text-saffron-400 text-xs font-bold"></div>
+      </div>
+      <div class="p-6 sm:p-7 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+          <div>
+            <h3 id="detail-title" class="text-2xl font-extrabold text-stone-900"></h3>
+            <p id="detail-route" class="text-sm text-stone-500 mt-1"></p>
+          </div>
+          <div class="sm:text-right shrink-0">
+            <div id="detail-price" class="text-2xl font-extrabold text-pine-900"></div>
+            <div id="detail-gst" class="text-xs text-stone-500"></div>
+          </div>
+        </div>
+
+        <p id="detail-desc" class="text-sm text-stone-600 leading-relaxed"></p>
+
+        <div id="detail-variants-wrap" class="hidden">
+          <div class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Select Package Option</div>
+          <div id="detail-variants" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+        </div>
+
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Included in Package</div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-sm">
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200">
+              <i data-lucide="bus" class="w-4 h-4 text-pine-700"></i>
+              <span id="detail-transport">Transport</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200">
+              <i data-lucide="utensils" class="w-4 h-4 text-pine-700"></i>
+              <span>Meals</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200">
+              <i data-lucide="tent" class="w-4 h-4 text-pine-700"></i>
+              <span>Accommodation</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200">
+              <i data-lucide="compass" class="w-4 h-4 text-pine-700"></i>
+              <span>Accomplished Guide</span>
+            </div>
+            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-stone-50 border border-stone-200">
+              <i data-lucide="sparkles" class="w-4 h-4 text-pine-700"></i>
+              <span>Activities</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-wrap items-center justify-end gap-3 border-t border-stone-200">
+          <button id="detail-close-secondary" type="button" class="px-4 py-2.5 rounded-xl border border-stone-200 text-sm font-semibold text-stone-700 hover:bg-stone-100 cursor-pointer">
+            Close
+          </button>
+          <button id="detail-book-btn" type="button" class="px-5 py-2.5 rounded-xl bg-pine-900 hover:bg-pine-800 text-white text-sm font-bold cursor-pointer">
+            Book This Trip
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking / Inquiry Modal -->
+  <div id="booking-modal" class="hidden fixed inset-0 z-50 bg-stone-950/60 modal-backdrop flex items-center justify-center p-4">
+    <div class="modal-panel bg-white rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-stone-200 p-6 sm:p-7">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-pine-700">Booking &amp; Estimate</span>
+          <h3 class="text-xl font-extrabold text-stone-900">Reserve Your Expedition</h3>
+        </div>
+        <button id="close-booking-btn" type="button" aria-label="Close booking modal" class="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <form id="booking-form" class="space-y-4">
+        <div>
+          <label for="b-package" class="block text-xs font-semibold text-stone-700 mb-1">Select Package</label>
+          <select id="b-package" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-pine-700"></select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="b-travelers" class="block text-xs font-semibold text-stone-700 mb-1">Travelers</label>
+            <input id="b-travelers" type="number" min="1" max="30" value="2" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+          </div>
+          <div>
+            <label for="b-date" class="block text-xs font-semibold text-stone-700 mb-1">Preferred Start Date</label>
+            <input id="b-date" type="date" required class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+          </div>
+        </div>
+
+        <div id="estimate-box" class="bg-pine-50 border border-pine-200 rounded-xl p-4 space-y-1.5 text-sm"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="b-name" class="block text-xs font-semibold text-stone-700 mb-1">Full Name</label>
+            <input id="b-name" type="text" required placeholder="Your full name" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+          </div>
+          <div>
+            <label for="b-phone" class="block text-xs font-semibold text-stone-700 mb-1">Phone / WhatsApp</label>
+            <input id="b-phone" type="tel" required placeholder="+91 98XXXXXXXX" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+          </div>
+        </div>
+
+        <div>
+          <label for="b-email" class="block text-xs font-semibold text-stone-700 mb-1">Email</label>
+          <input id="b-email" type="email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 text-sm rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-700" />
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-pine-900 hover:bg-pine-800 text-white font-bold text-sm transition-colors cursor-pointer">
+          Confirm Booking Inquiry
+        </button>
+      </form>
+
+      <div id="booking-success" class="hidden mt-4 p-4 rounded-xl bg-pine-50 border border-pine-200 text-pine-900 text-sm space-y-2"></div>
+    </div>
+  </div>
+
+  <!-- Policy Modal -->
+  <div id="policy-modal" class="hidden fixed inset-0 z-50 bg-stone-950/60 modal-backdrop flex items-center justify-center p-4">
+    <div class="modal-panel bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-stone-200 p-6">
+      <div class="flex items-center justify-between mb-3">
+        <h3 id="policy-title" class="text-lg font-extrabold text-stone-900"></h3>
+        <button id="close-policy-btn" type="button" aria-label="Close policy modal" class="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+      <div id="policy-body" class="text-sm text-stone-600 leading-relaxed space-y-2"></div>
+    </div>
+  </div>
+
+  <!-- Gallery Lightbox Modal -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-stone-950/90 modal-backdrop flex items-center justify-center p-4">
+    <div class="modal-panel relative max-w-4xl w-full">
+      <button id="close-lightbox-btn" type="button" aria-label="Close lightbox" class="absolute -top-11 right-0 text-white hover:text-saffron-400 flex items-center gap-1 text-sm font-semibold cursor-pointer">
+        <span>Close</span>
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="w-full max-h-[75vh] object-contain rounded-xl shadow-2xl bg-black" />
+      <div class="mt-3 flex items-center justify-between text-white">
+        <div>
+          <div id="lightbox-title" class="font-bold text-base"></div>
+          <div id="lightbox-caption" class="text-xs text-stone-300"></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="lightbox-prev" type="button" class="px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold cursor-pointer">&larr; Prev</button>
+          <button id="lightbox-next" type="button" class="px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold cursor-pointer">Next &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // EASY CLIENT CUSTOMIZATION CONFIG — Edit any details below for your client
+    // =========================================================================
+    const SITE_CONFIG = {
+      brandName: "Trekhickers",
+      phones: ["+91 8630607876", "+91 7668244894"],
+      email: "infotrekhickers@gmail.com",
+      hours: "Mon–Sun 7:00 AM – 10:00 PM",
+      gstRate: 0.05,
+    };
+
+    const IMG_HERO = "images/hero.jpg";
+    const IMG_SNOW = "images/snow-trek.jpg";
+    const IMG_ALPINE = "images/alpine-lake.jpg";
+    const IMG_TOUR = "images/uttarakhand-tour.jpg";
+
+    const PACKAGES = [
+      {
+        id: "kedarkantha",
+        title: "Kedarkantha Trek",
+        category: "snow-treks",
+        days: 5,
+        nights: 4,
+        route: "Dehradun to Dehradun",
+        transport: "Uttarkashi Transport",
+        price: 5999,
+        unit: "per adult",
+        image: 'images/kedarkantha.jpg',
+        desc: "Classic Himalayan winter summit trek with pine forest trails, snow-covered ridges, and panoramic summit views."
+      },
+      {
+        id: "har-ki-dun",
+        title: "Har Ki Dun Trek",
+        category: "alpine-treks",
+        days: 7,
+        nights: 6,
+        route: "Dehradun to Dehradun",
+        transport: "Uttarkashi Transport",
+        price: 8999,
+        unit: "per adult",
+        image: 'images/green-valley-to-har-ki-dun-in-summer.jpg',
+        desc: "Ancient valley trek through picturesque villages, alpine meadows, and dramatic Himalayan peaks."
+      },
+      {
+        id: "chandranahan-lake",
+        title: "Chandranahan Lake Trek",
+        category: "alpine-treks",
+        days: 8,
+        nights: 7,
+        route: "Shimla to Shimla",
+        transport: "Jhanglik Transport",
+        price: 8999,
+        unit: "per adult",
+        image: 'images/Chandranahan.jpg',
+        desc: "High-altitude glacial lake expedition—best experienced in May, June, September, and October."
+      },
+      {
+        id: "do-dham-yatra",
+        title: "Do Dham Yatra",
+        category: "tours",
+        days: 6,
+        nights: 5,
+        route: "Haridwar to Haridwar",
+        transport: "Haridwar Transport",
+        price: 13999,
+        unit: "per person",
+        image: 'images/dodham.jpg',
+        desc: "Sacred Uttarakhand pilgrimage covering two of the four holy Char Dham shrines (Yamunotri, Gangotri, Kedarnath, Badrinath).",
+        variants: [
+          { label: "6 Days / 5 Nights (Haridwar to Haridwar)", days: 6, nights: 5, route: "Haridwar to Haridwar", price: 13999 },
+          { label: "7 Days / 6 Nights (Delhi to Delhi)", days: 7, nights: 6, route: "Delhi to Delhi", price: 16999 }
+        ]
+      },
+      {
+        id: "phulara-ridge",
+        title: "Phulara Ridge Trek",
+        category: "snow-treks",
+        days: 6,
+        nights: 5,
+        route: "Dehradun to Dehradun",
+        transport: "Uttarkashi Transport",
+        price: 10999,
+        unit: "per adult",
+        image: 'images/phulararidge.jpg',
+        desc: "Rare Himalayan ridge walk offering uninterrupted 360-degree mountain vistas and lush bugyals."
+      },
+      {
+        id: "chaainsheel-bugyal",
+        title: "Chaainsheel Bugyal Trek",
+        category: "alpine-treks",
+        days: 7,
+        nights: 6,
+        route: "Dehradun to Dehradun",
+        transport: "Rohru Transport",
+        price: 11999,
+        unit: "per adult",
+        image: 'images/chainseenbygyal.jpg',
+        desc: "Expansive high-altitude meadow trail connecting remote Himalayan ridges with serene campsites."
+      },
+      {
+        id: "ruinsara-tal",
+        title: "Ruinsara Tal Trek",
+        category: "alpine-treks",
+        days: 6,
+        nights: 5,
+        route: "Dehradun to Dehradun",
+        transport: "Uttarkashi Transport",
+        price: 11999,
+        unit: "per adult",
+        image: 'images/ruinsara.webp',
+        desc: "Scenic glacial lake trek surrounded by Swargarohini peaks and vibrant alpine flora."
+      },
+      {
+        id: "buran-ghati",
+        title: "Buran Ghati Trek",
+        category: "snow-treks",
+        days: 7,
+        nights: 6,
+        route: "Shimla to Shimla",
+        transport: "Jhanglik Transport",
+        price: 12499,
+        unit: "per adult",
+        image: ' images/buranghati.jpg',
+        desc: "Thrilling crossover pass trek featuring dense forests, Chandranahan Lake, and dramatic snow walls."
+      },
+      {
+        id: "borasu-pass",
+        title: "Borasu Pass Trek",
+        category: "alpine-treks",
+        days: 8,
+        nights: 7,
+        route: "Dehradun to Chitkul Village",
+        transport: "Uttarkashi Transport",
+        price: 25999,
+        unit: "per adult",
+        image: 'images/borsapasstrek.jpg',
+        desc: "High-altitude expedition linking Uttarakhand's Har Ki Dun valley to Himachal's Chitkul village."
+      },
+      {
+        id: "chopta-chandrashila",
+        title: "Chopta Chandrashila Trek",
+        category: "snow-treks",
+        days: 4,
+        nights: 3,
+        route: "Dehradun / Rishikesh",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/chopta.jpg',
+        desc: "Scenic summit trek to Tungnath and Chandrashila peak—designed to refresh you inside out."
+      },
+      {
+        id: "dayara-bugyal",
+        title: "Dayara Bugyal Trek",
+        category: "snow-treks",
+        days: 5,
+        nights: 4,
+        route: "Dehradun to Dehradun",
+        transport: "Uttarkashi Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/dhyarabugyal.jpg',
+        desc: "Vast rolling alpine meadows ideal for beginners, families, and winter snow trekkers."
+      },
+      {
+        id: "nag-tibba",
+        title: "Nag Tibba Trek",
+        category: "snow-treks",
+        days: 2,
+        nights: 1,
+        route: "Dehradun to Dehradun",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/naggtibba.webp',
+        desc: "Weekend Himalayan summit getaway near Mussoorie with panoramic views of Bandarpunch."
+      },
+      {
+        id: "rupin-pass",
+        title: "Rupin Pass Trek",
+        category: "alpine-treks",
+        days: 8,
+        nights: 7,
+        route: "Dehradun to Shimla",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/rupinpass.webp',
+        desc: "Iconic crossover trail famous for hanging villages, waterfalls, and snow bridges."
+      },
+      {
+        id: "bali-pass",
+        title: "Bali Pass Trek",
+        category: "alpine-treks",
+        days: 8,
+        nights: 7,
+        route: "Dehradun to Dehradun",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/balipass.jpg',
+        desc: "Challenging high-altitude pass connecting Har Ki Dun valley to Yamunotri."
+      },
+      {
+        id: "valley-of-flowers",
+        title: "Valley of Flowers Trek",
+        category: "alpine-treks",
+        days: 6,
+        nights: 5,
+        route: "Haridwar / Rishikesh",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/flowers.jpg',
+        desc: "UNESCO heritage alpine valley blooming with hundreds of wild Himalayan flower species."
+      },
+      {
+        id: "chardham-yatra",
+        title: "Chardham Yatra",
+        category: "tours",
+        days: 10,
+        nights: 9,
+        route: "Haridwar / Delhi",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/chardham.jpg',
+        desc: "Complete sacred circuit to Yamunotri, Gangotri, Kedarnath, and Badrinath with stays and meals."
+      },
+      {
+        id: "rishikesh-tour",
+        title: "Rishikesh Tour",
+        category: "tours",
+        days: 3,
+        nights: 2,
+        route: "Rishikesh",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/rishekesh.jpg',
+        desc: "Riverside camps along the Ganga, yoga ashrams, sanctuaries, and adventure activities."
+      },
+      {
+        id: "mussoorie-tour",
+        title: "Mussoorie Tour",
+        category: "tours",
+        days: 3,
+        nights: 2,
+        route: "Dehradun / Mussoorie",
+        transport: "Included Transport",
+        price: null,
+        unit: "Custom Quote",
+        image: 'images/mussorie.jpg',
+        desc: "Classic hill-station getaway featuring misty viewpoints, waterfalls, and cozy mountain stays."
+      }
+    ];
+
+    const GALLERY_ITEMS = [
+      { id: 1, title: "Himalayan Golden Hour Ridge", caption: "Uttarakhand Alpine Meadow Trail", cat: "peaks", image: IMG_HERO },
+      { id: 2, title: "Kedarkantha Winter Ascent", caption: "Snow-dusted pine forest at sunrise", cat: "peaks", image: IMG_SNOW },
+      { id: 3, title: "Chandranahan Glacial Lake", caption: "High-altitude alpine basin reflection", cat: "lakes", image: IMG_ALPINE },
+      { id: 4, title: "Garhwal Temple & River Valley", caption: "Misty morning along sacred mountain shrines", cat: "heritage", image: IMG_TOUR },
+      { id: 5, title: "Phulara Ridge Panorama", caption: "360-degree Himalayan summit views", cat: "peaks", image: IMG_SNOW },
+      { id: 6, title: "Har Ki Dun & Ruinsara Tal", caption: "Lush valley campsites & glacial streams", cat: "lakes", image: IMG_ALPINE }
+    ];
+
+    const FAQS = [
+      {
+        q: "What is included in a standard Trekhickers package?",
+        a: "All standard trek and tour packages include base-to-base transport, trail meals, accommodation (camps/guesthouses), scheduled activities, and an accomplished local guide."
+      },
+      {
+        q: "Is GST included in the listed starting price?",
+        a: "Service tax @ 5% GST applies on top of the listed base package price. Our booking estimator automatically calculates the exact 5% GST breakdown for you."
+      },
+      {
+        q: "Can solo travelers or custom groups book?",
+        a: "Yes! We welcome solo travelers, families, and private groups. You can join fixed departures or request a custom itinerary for 50+ destinations across India."
+      },
+      {
+        q: "How do I reach customer support during a trip?",
+        a: "Our team is available daily from 7:00 AM to 10:00 PM at +91 8630607876 / +91 7668244894 or infotrekvia@gmail.com, with 24×7 support for active trips."
+      }
+    ];
+
+    const TEAM = [
+      { name: "Mohit Chauhan", role: "Director", initials: "MC" },
+      { name: "Ankit Chauhan", role: "Co-Founder", initials: "AC" }
+    ];
+
+    const TESTIMONIALS = [
+      {
+        name: "Ashish Panday",
+        quote: "The perfect combination — lone travelling, excellent organisation and the best of experiences, thank you."
+      },
+      {
+        name: "Rajveer Sharma",
+        quote: "We had a wonderful holiday which will remain long in the memory."
+      },
+      {
+        name: "Aman Gupta",
+        quote: "Good services, good food, good staff and lots of interesting trips. Learned loads about Uttarakhand."
+      },
+      {
+        name: "Arman Arora",
+        quote: "A great time, well organised!"
+      }
+    ];
+
+    const POLICIES = {
+      cancellations: {
+        title: "Cancellations & Refunds",
+        body: "Cancellation requests should be emailed to infotrekvia@gmail.com or shared with our support team on +91 8630607876. Refunds and rescheduling depend on advance notice prior to the departure date and transport/hotel partner terms."
+      },
+      terms: {
+        title: "Terms & Conditions",
+        body: "All package rates are subject to 5% GST. Itineraries may be adjusted by our trek leaders in the interest of participant safety due to weather or trail conditions in the Himalayas."
+      },
+      privacy: {
+        title: "Privacy Policy",
+        body: "Trekhickers collects contact and traveler details solely to coordinate bookings, permits, transport, and accommodation. We never sell or share your personal information with unrelated third parties."
+      }
+    };
+
+    // =========================================================================
+    // STATE, ROUTING & RENDERING
+    // =========================================================================
+    const state = {
+      currentPage: "home",
+      category: "all",
+      search: "",
+      sort: "featured",
+      galleryCat: "all",
+      lightboxIdx: 0,
+      selectedPkgId: null,
+      selectedVariantIdx: 0,
+    };
+
+    function formatINR(num) {
+      return "₹" + Number(num).toLocaleString("en-IN");
+    }
+
+    function navigateTo(pageId) {
+      const valid = ["home", "tours", "gallery", "about", "support", "contact"];
+      const target = valid.includes(pageId) ? pageId : "home";
+      state.currentPage = target;
+
+      valid.forEach((p) => {
+        const el = document.getElementById(p);
+        if (el) {
+          if (p === target) {
+            el.classList.remove("hidden");
+            el.classList.remove("page-view");
+            void el.offsetWidth; // trigger smooth CSS re-animation
+            el.classList.add("page-view");
+          } else {
+            el.classList.add("hidden");
+          }
+        }
+      });
+
+      document.querySelectorAll("header nav .nav-link").forEach((link) => {
+        const active = link.dataset.page === target;
+        link.className = active
+          ? "nav-link px-2 py-1 rounded-md transition-colors whitespace-nowrap text-pine-900 font-bold bg-pine-50"
+          : "nav-link px-2 py-1 rounded-md hover:text-pine-800 transition-colors whitespace-nowrap";
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function buildPackageCard(p) {
+      const priceHtml = p.price
+        ? `<div class="text-xl font-extrabold text-pine-900">${formatINR(p.price)} <span class="text-xs font-medium text-stone-500">/ ${p.unit}</span></div>
+           <div class="text-[11px] text-stone-500">+ 5% GST</div>`
+        : `<div class="text-base font-bold text-pine-800">Custom Quote</div>
+           <div class="text-[11px] text-stone-500">Tailored to group size</div>`;
+
+      return `
+        <article class="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col">
+          <div class="relative aspect-[4/3] overflow-hidden bg-stone-200">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-pine-950/85 text-white text-xs font-semibold">
+              ${p.days} Days / ${p.nights} Nights
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+            <div>
+              <div class="text-xs font-semibold text-pine-700 mb-1">${p.route}</div>
+              <h3 class="text-lg font-extrabold text-stone-900">${p.title}</h3>
+              <p class="text-sm text-stone-600 mt-1.5 line-clamp-2">${p.desc}</p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-medium text-stone-600">
+              <span class="px-2 py-0.5 rounded bg-stone-100">Transport</span>
+              <span class="px-2 py-0.5 rounded bg-stone-100">Meals</span>
+              <span class="px-2 py-0.5 rounded bg-stone-100">Stay</span>
+              <span class="px-2 py-0.5 rounded bg-stone-100">Guide</span>
+            </div>
+
+            <div class="pt-3 border-t border-stone-100 flex items-center justify-between gap-3">
+              <div>${priceHtml}</div>
+              <div class="flex items-center gap-2">
+                <button type="button" data-action="detail" data-id="${p.id}" class="pkg-action px-3 py-2 rounded-lg border border-stone-200 text-xs font-semibold text-stone-700 hover:bg-stone-100 cursor-pointer">
+                  Details
+                </button>
+                <button type="button" data-action="book" data-id="${p.id}" class="pkg-action px-3.5 py-2 rounded-lg bg-pine-900 hover:bg-pine-800 text-white text-xs font-bold cursor-pointer">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function getFilteredPackages() {
+      const q = state.search.trim().toLowerCase();
+      let list = PACKAGES.filter((p) => {
+        const matchCat = state.category === "all" || p.category === state.category;
+        const matchSearch =
+          !q ||
+          p.title.toLowerCase().includes(q) ||
+          p.route.toLowerCase().includes(q) ||
+          p.desc.toLowerCase().includes(q);
+        return matchCat && matchSearch;
+      });
+
+      if (state.sort === "price-asc") {
+        list = [...list].sort((a, b) => (a.price ?? 999999) - (b.price ?? 999999));
+      } else if (state.sort === "price-desc") {
+        list = [...list].sort((a, b) => (b.price ?? -1) - (a.price ?? -1));
+      } else if (state.sort === "duration-asc") {
+        list = [...list].sort((a, b) => a.days - b.days);
+      }
+      return list;
+    }
+
+    function renderPackages() {
+      const homeGrid = document.getElementById("home-featured-grid");
+      homeGrid.innerHTML = PACKAGES.slice(0, 3).map(buildPackageCard).join("");
+
+      const grid = document.getElementById("packages-grid");
+      const empty = document.getElementById("empty-state");
+      const items = getFilteredPackages();
+
+      if (items.length === 0) {
+        grid.innerHTML = "";
+        empty.classList.remove("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+      grid.innerHTML = items.map(buildPackageCard).join("");
+    }
+
+    function renderGallery() {
+      const items = state.galleryCat === "all"
+        ? GALLERY_ITEMS
+        : GALLERY_ITEMS.filter((g) => g.cat === state.galleryCat);
+      const grid = document.getElementById("gallery-grid");
+      grid.innerHTML = items
+        .map(
+          (g) => `
+          <button type="button" data-gid="${g.id}" class="gal-card group relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-200 border border-stone-200 shadow-sm text-left cursor-pointer">
+            <img src="${g.image}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent opacity-85 group-hover:opacity-100 transition-opacity"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <div class="font-bold text-base">${g.title}</div>
+              <div class="text-xs text-stone-200 mt-0.5">${g.caption}</div>
+            </div>
+          </button>
+        `
+        )
+        .join("");
+    }
+
+    function openLightbox(idx) {
+      state.lightboxIdx = (idx + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+      const item = GALLERY_ITEMS[state.lightboxIdx];
+      document.getElementById("lightbox-img").src = item.image;
+      document.getElementById("lightbox-img").alt = item.title;
+      document.getElementById("lightbox-title").textContent = item.title;
+      document.getElementById("lightbox-caption").textContent = item.caption;
+      document.getElementById("lightbox-modal").classList.remove("hidden");
+    }
+
+    function renderFaqs() {
+      const el = document.getElementById("faq-list");
+      el.innerHTML = FAQS.map(
+        (f, i) => `
+        <div class="py-4">
+          <button type="button" data-faq="${i}" class="faq-btn w-full flex items-center justify-between text-left font-bold text-stone-900 hover:text-pine-800 cursor-pointer">
+            <span>${f.q}</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-stone-500 transition-transform"></i>
+          </button>
+          <div id="faq-ans-${i}" class="hidden mt-2 text-sm text-stone-600 leading-relaxed">${f.a}</div>
+        </div>
+      `
+      ).join("");
+    }
+
+    function renderTeamAndTestimonials() {
+      const teamEl = document.getElementById("team-list");
+      teamEl.innerHTML = TEAM.map(
+        (m) => `
+          <div class="flex items-center gap-4 p-3 rounded-xl bg-stone-50 border border-stone-200">
+            <div class="w-12 h-12 rounded-full bg-pine-900 text-saffron-400 font-extrabold flex items-center justify-center shrink-0">
+              ${m.initials}
+            </div>
+            <div>
+              <div class="font-bold text-stone-900">${m.name}</div>
+              <div class="text-xs font-semibold text-pine-700 uppercase tracking-wide">${m.role}</div>
+            </div>
+          </div>
+        `
+      ).join("");
+
+      const testEl = document.getElementById("testimonials-grid");
+      testEl.innerHTML = TESTIMONIALS.map(
+        (t) => `
+          <div class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-1 text-saffron-500 mb-3">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="text-sm text-stone-700 leading-relaxed">&ldquo;${t.quote}&rdquo;</p>
+            </div>
+            <div class="pt-3 border-t border-stone-100">
+              <div class="font-bold text-sm text-stone-900">${t.name}</div>
+              <div class="text-xs text-stone-500">Verified Client</div>
+            </div>
+          </div>
+        `
+      ).join("");
+    }
+
+    function openDetailModal(pkgId) {
+      const pkg = PACKAGES.find((p) => p.id === pkgId);
+      if (!pkg) return;
+      state.selectedPkgId = pkgId;
+      state.selectedVariantIdx = 0;
+
+      document.getElementById("detail-img").src = pkg.image;
+      document.getElementById("detail-img").alt = pkg.title;
+      document.getElementById("detail-title").textContent = pkg.title;
+      document.getElementById("detail-desc").textContent = pkg.desc;
+      document.getElementById("detail-transport").textContent = pkg.transport;
+
+      const variantsWrap = document.getElementById("detail-variants-wrap");
+      const variantsEl = document.getElementById("detail-variants");
+
+      const updateVariantView = () => {
+        const active = pkg.variants ? pkg.variants[state.selectedVariantIdx] : pkg;
+        document.getElementById("detail-badge").textContent = `${active.days} Days / ${active.nights} Nights`;
+        document.getElementById("detail-route").textContent = `Route: ${active.route}`;
+        if (active.price) {
+          document.getElementById("detail-price").textContent = formatINR(active.price);
+          document.getElementById("detail-gst").textContent = `${pkg.unit} + 5% GST`;
+        } else {
+          document.getElementById("detail-price").textContent = "Custom Quote";
+          document.getElementById("detail-gst").textContent = "Price on request";
+        }
+      };
+
+      if (pkg.variants && pkg.variants.length) {
+        variantsWrap.classList.remove("hidden");
+        variantsEl.innerHTML = pkg.variants
+          .map(
+            (v, idx) => `
+              <button type="button" data-vidx="${idx}" class="variant-btn text-left p-3 rounded-xl border text-xs font-semibold cursor-pointer ${
+                idx === 0 ? "border-pine-800 bg-pine-50 text-pine-900" : "border-stone-200 text-stone-700 hover:bg-stone-50"
+              }">
+                <div>${v.label}</div>
+                <div class="text-pine-700 font-bold mt-1">${formatINR(v.price)} + 5% GST</div>
+              </button>
+            `
+          )
+          .join("");
+        variantsEl.querySelectorAll(".variant-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            state.selectedVariantIdx = Number(btn.dataset.vidx);
+            variantsEl.querySelectorAll(".variant-btn").forEach((b, i) => {
+              b.className = `variant-btn text-left p-3 rounded-xl border text-xs font-semibold cursor-pointer ${
+                i === state.selectedVariantIdx ? "border-pine-800 bg-pine-50 text-pine-900" : "border-stone-200 text-stone-700 hover:bg-stone-50"
+              }`;
+            });
+            updateVariantView();
+          });
+        });
+      } else {
+        variantsWrap.classList.add("hidden");
+      }
+
+      updateVariantView();
+      document.getElementById("detail-modal").classList.remove("hidden");
+    }
+
+    function closeDetailModal() {
+      document.getElementById("detail-modal").classList.add("hidden");
+    }
+
+    function populateBookingSelect() {
+      const sel = document.getElementById("b-package");
+      sel.innerHTML = PACKAGES.map((p) => {
+        const label = p.price ? `${p.title} (${formatINR(p.price)})` : `${p.title} (Custom Quote)`;
+        return `<option value="${p.id}">${label}</option>`;
+      }).join("");
+    }
+
+    function updateBookingEstimate() {
+      const pkgId = document.getElementById("b-package").value;
+      const travelers = Math.max(1, parseInt(document.getElementById("b-travelers").value, 10) || 1);
+      const pkg = PACKAGES.find((p) => p.id === pkgId);
+      const box = document.getElementById("estimate-box");
+      if (!pkg || !pkg.price) {
+        box.innerHTML = `
+          <div class="font-bold text-pine-900">Custom Package Quote</div>
+          <div class="text-xs text-stone-600">We will send a tailored itinerary and per-person quote for ${travelers} traveler(s).</div>
+        `;
+        return;
+      }
+      const activePrice = pkg.variants ? pkg.variants[state.selectedVariantIdx]?.price || pkg.price : pkg.price;
+      const subtotal = activePrice * travelers;
+      const gst = Math.round(subtotal * SITE_CONFIG.gstRate);
+      const total = subtotal + gst;
+      box.innerHTML = `
+        <div class="flex justify-between text-stone-700">
+          <span>Base (${travelers} &times; ${formatINR(activePrice)})</span>
+          <span class="font-semibold">${formatINR(subtotal)}</span>
+        </div>
+        <div class="flex justify-between text-stone-700">
+          <span>Service Tax (5% GST)</span>
+          <span class="font-semibold">${formatINR(gst)}</span>
+        </div>
+        <div class="flex justify-between text-pine-950 font-extrabold pt-1.5 border-t border-pine-200">
+          <span>Estimated Total</span>
+          <span>${formatINR(total)}</span>
+        </div>
+      `;
+    }
+
+    function openBookingModal(pkgId) {
+      closeDetailModal();
+      const sel = document.getElementById("b-package");
+      if (pkgId) sel.value = pkgId;
+      document.getElementById("booking-success").classList.add("hidden");
+      document.getElementById("booking-form").classList.remove("hidden");
+      updateBookingEstimate();
+      document.getElementById("booking-modal").classList.remove("hidden");
+    }
+
+    function closeBookingModal() {
+      document.getElementById("booking-modal").classList.add("hidden");
+    }
+
+    function openPolicyModal(key) {
+      const p = POLICIES[key];
+      if (!p) return;
+      document.getElementById("policy-title").textContent = p.title;
+      document.getElementById("policy-body").textContent = p.body;
+      document.getElementById("policy-modal").classList.remove("hidden");
+    }
+
+    // =========================================================================
+    // INIT & EVENT LISTENERS
+    // =========================================================================
+    document.addEventListener("DOMContentLoaded", () => {
+      renderPackages();
+      renderGallery();
+      renderFaqs();
+      renderTeamAndTestimonials();
+      populateBookingSelect();
+
+      const today = new Date().toISOString().split("T")[0];
+      document.getElementById("b-date").value = today;
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      // Page Navigation (SPA routing with transitions)
+      document.addEventListener("click", (e) => {
+        const nav = e.target.closest(".nav-link");
+        if (nav && nav.dataset.page) {
+          e.preventDefault();
+          navigateTo(nav.dataset.page);
+          document.getElementById("mobile-menu").classList.add("hidden");
+        }
+      });
+
+      // Mobile menu
+      document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      });
+
+      // Category filter buttons
+      document.getElementById("category-tabs").addEventListener("click", (e) => {
+        const btn = e.target.closest(".cat-btn");
+        if (!btn) return;
+        state.category = btn.dataset.category;
+        document.querySelectorAll(".cat-btn").forEach((b) => {
+          const active = b.dataset.category === state.category;
+          b.className = `cat-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
+            active ? "bg-pine-900 text-white" : "bg-stone-100 text-stone-700 hover:bg-stone-200"
+          }`;
+        });
+        renderPackages();
+      });
+
+      document.getElementById("search-input").addEventListener("input", (e) => {
+        state.search = e.target.value;
+        renderPackages();
+      });
+
+      document.getElementById("sort-select").addEventListener("change", (e) => {
+        state.sort = e.target.value;
+        renderPackages();
+      });
+
+      document.getElementById("reset-filters-btn").addEventListener("click", () => {
+        state.category = "all";
+        state.search = "";
+        state.sort = "featured";
+        document.getElementById("search-input").value = "";
+        document.getElementById("sort-select").value = "featured";
+        document.querySelectorAll(".cat-btn").forEach((b) => {
+          const active = b.dataset.category === "all";
+          b.className = `cat-btn px-4 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
+            active ? "bg-pine-900 text-white" : "bg-stone-100 text-stone-700 hover:bg-stone-200"
+          }`;
+        });
+        renderPackages();
+      });
+
+      // Delegated package card actions (works on both Home & Tours pages)
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".pkg-action");
+        if (!btn) return;
+        const { action, id } = btn.dataset;
+        if (action === "detail") openDetailModal(id);
+        if (action === "book") openBookingModal(id);
+      });
+
+      // Gallery filters & lightbox
+      document.getElementById("gallery-filters").addEventListener("click", (e) => {
+        const btn = e.target.closest(".gal-filter-btn");
+        if (!btn) return;
+        state.galleryCat = btn.dataset.gcat;
+        document.querySelectorAll(".gal-filter-btn").forEach((b) => {
+          const active = b.dataset.gcat === state.galleryCat;
+          b.className = `gal-filter-btn px-4 py-2 rounded-lg text-sm font-semibold cursor-pointer ${
+            active ? "bg-pine-900 text-white" : "bg-stone-200 text-stone-700 hover:bg-stone-300"
+          }`;
+        });
+        renderGallery();
+      });
+
+      document.getElementById("gallery-grid").addEventListener("click", (e) => {
+        const card = e.target.closest(".gal-card");
+        if (!card) return;
+        const idx = GALLERY_ITEMS.findIndex((g) => g.id === Number(card.dataset.gid));
+        if (idx >= 0) openLightbox(idx);
+      });
+
+      document.getElementById("close-lightbox-btn").addEventListener("click", () => {
+        document.getElementById("lightbox-modal").classList.add("hidden");
+      });
+      document.getElementById("lightbox-prev").addEventListener("click", () => openLightbox(state.lightboxIdx - 1));
+      document.getElementById("lightbox-next").addEventListener("click", () => openLightbox(state.lightboxIdx + 1));
+
+      // FAQ accordion
+      document.getElementById("faq-list").addEventListener("click", (e) => {
+        const btn = e.target.closest(".faq-btn");
+        if (!btn) return;
+        const ans = document.getElementById(`faq-ans-${btn.dataset.faq}`);
+        if (ans) ans.classList.toggle("hidden");
+      });
+
+      // Detail modal controls
+      document.getElementById("close-detail-btn").addEventListener("click", closeDetailModal);
+      document.getElementById("detail-close-secondary").addEventListener("click", closeDetailModal);
+      document.getElementById("detail-book-btn").addEventListener("click", () => openBookingModal(state.selectedPkgId));
+
+      // Booking modal controls
+      document.getElementById("open-custom-booking-btn").addEventListener("click", () => openBookingModal(PACKAGES[0].id));
+      document.getElementById("hero-quote-btn").addEventListener("click", () => openBookingModal(PACKAGES[0].id));
+      document.getElementById("close-booking-btn").addEventListener("click", closeBookingModal);
+      document.getElementById("b-package").addEventListener("change", updateBookingEstimate);
+      document.getElementById("b-travelers").addEventListener("input", updateBookingEstimate);
+
+      document.getElementById("booking-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const pkg = PACKAGES.find((p) => p.id === document.getElementById("b-package").value);
+        const name = document.getElementById("b-name").value.trim();
+        const travelers = document.getElementById("b-travelers").value;
+        const date = document.getElementById("b-date").value;
+        const box = document.getElementById("booking-success");
+        box.innerHTML = `
+          <div class="font-bold text-pine-950">Inquiry Received for ${pkg ? pkg.title : "Your Trip"}!</div>
+          <p>Thank you, <strong>${name}</strong>. We've logged your request for <strong>${travelers} traveler(s)</strong> starting <strong>${date}</strong>. Our team will reach out shortly via phone/email (${SITE_CONFIG.phones[0]} / ${SITE_CONFIG.email}).</p>
+        `;
+        document.getElementById("booking-form").classList.add("hidden");
+        box.classList.remove("hidden");
+      });
+
+      // Contact form
+      document.getElementById("contact-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("c-name").value.trim();
+        const msgBox = document.getElementById("contact-success");
+        msgBox.textContent = `Thanks, ${name}! Your callback request has been noted. You can also reach us directly at ${SITE_CONFIG.phones[0]} or ${SITE_CONFIG.email}.`;
+        msgBox.classList.remove("hidden");
+        e.target.reset();
+      });
+
+      // Policy modal
+      document.querySelectorAll(".policy-btn").forEach((btn) => {
+        btn.addEventListener("click", () => openPolicyModal(btn.dataset.policy));
+      });
+      document.getElementById("close-policy-btn").addEventListener("click", () => {
+        document.getElementById("policy-modal").classList.add("hidden");
+      });
+    });
+  </script>
+</body>
+</html>
